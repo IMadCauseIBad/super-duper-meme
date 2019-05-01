@@ -7,7 +7,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+
+import static com.example.xkcdapp.urlReader.readJsonFromUrl;
 
 //import com.google.gson.Gson;
 //import com.google.gson.GsonBuilder;
@@ -16,10 +24,9 @@ import org.json.JSONObject;
 
 
 
-
-
 public class MainActivity extends AppCompatActivity {
     private String url = "";
+    private JSONObject jsonUrl;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,31 +41,45 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                  String value = myEditText.getText().toString();
                  url = "https://xkcd.com/" + value + "/info.0.json";
-                 txtURL.setText(urlReader(url));
-                 txtDate.setText(postDate(url));
+                 try {
+                     //jsonUrl = readJsonFromUrl(url);
+                 } catch(JSONException ex) {
 
+                 } catch(IOException dx) {
+
+                 }
+                //JsonParser json = new JsonParser();
+                 //txtURL.setText(urlReader(url));
+                 txtDate.setText(postDate(url)));
+                 txtURL.setText("https://imgs.xkcd.com/comics/woodpecker.png");
+                 txtName.setText("Woodpecker");
             }
         });
     }
-    private static String postDate(String url) {
+    private static String postDate(JSONObject url) {
         String day;
         String month;
         String year;
+        Gson x = new GsonBuilder().setPrettyPrinting().create();
         try {
-            JSONObject main = new JSONObject(url);
-            day = main.getString("day");
-            month = main.getString("month");
-            year = main.getString("year");
-            return month + "/" + day + "/" + year;
+            //JsonParser json = new JsonParser();
+            //JsonElement main = json.parse("hello");
+            //String test = x.toJson(main);
+            //day = url.getString("day");
+            //month = url.getString("month");
+            //year = url.getString("year");
+          //  return month + "/" + day + "/" + year;
+            return "7/24/2009";
         } catch (Exception e) {
-            return null;
+            return "Error for month day year.";
         }
     }
 
     public static String urlReader(String url) {
         try {
-            JSONObject main = new JSONObject(url);
-            return main.getString("img");
+            //JSONObject main = new JSONObject(url);
+            //return main.getString("img");
+            return "https://imgs.xkcd.com/comics/woodpecker.png";
         } catch (Exception e) {
             return "Oops, looks like something went wrong";
         }

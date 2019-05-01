@@ -42,17 +42,15 @@ public class MainActivity extends AppCompatActivity {
                  String value = myEditText.getText().toString();
                  url = "https://xkcd.com/" + value + "/info.0.json";
                  try {
-                     //jsonUrl = readJsonFromUrl(url);
+                     jsonUrl = readJsonFromUrl(url);
                  } catch(JSONException ex) {
 
                  } catch(IOException dx) {
 
                  }
                 //JsonParser json = new JsonParser();
-                 //txtURL.setText(urlReader(url));
-                 txtDate.setText(postDate(url)));
-                 txtURL.setText("https://imgs.xkcd.com/comics/woodpecker.png");
-                 txtName.setText("Woodpecker");
+                 txtURL.setText(urlReader(url));
+                 txtDate.setText(postDate(jsonUrl));
             }
         });
     }
@@ -62,14 +60,13 @@ public class MainActivity extends AppCompatActivity {
         String year;
         Gson x = new GsonBuilder().setPrettyPrinting().create();
         try {
-            //JsonParser json = new JsonParser();
-            //JsonElement main = json.parse("hello");
-            //String test = x.toJson(main);
-            //day = url.getString("day");
-            //month = url.getString("month");
-            //year = url.getString("year");
-          //  return month + "/" + day + "/" + year;
-            return "7/24/2009";
+            JsonParser json = new JsonParser();
+            JsonElement main = json.parse("hello");
+            String test = x.toJson(main);
+            day = url.getString("day");
+            month = url.getString("month");
+            year = url.getString("year");
+            return month + "/" + day + "/" + year;
         } catch (Exception e) {
             return "Error for month day year.";
         }
@@ -77,9 +74,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static String urlReader(String url) {
         try {
-            //JSONObject main = new JSONObject(url);
-            //return main.getString("img");
-            return "https://imgs.xkcd.com/comics/woodpecker.png";
+            JSONObject main = new JSONObject(url);
+            return main.getString("img");
         } catch (Exception e) {
             return "Oops, looks like something went wrong";
         }

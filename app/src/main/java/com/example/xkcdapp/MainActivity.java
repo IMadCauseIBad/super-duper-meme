@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                  String value = myEditText.getText().toString();
-                 url = "https://xkcd.com/" + value + "/info.o.json";
+                 url = "https://xkcd.com/" + value + "/info.0.json";
                  txtURL.setText(urlReader(url));
                  txtDate.setText(postDate(url));
 

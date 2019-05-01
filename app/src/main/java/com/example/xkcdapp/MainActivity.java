@@ -9,9 +9,6 @@ import android.widget.TextView;
 
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.Reader;
-
 //import com.google.gson.Gson;
 //import com.google.gson.GsonBuilder;
 //import com.google.gson.JsonElement;
@@ -31,32 +28,39 @@ public class MainActivity extends AppCompatActivity {
         Button button = findViewById(R.id.search);
         final TextView txtURL = findViewById(R.id.txtURL);
         final TextView txtDate = findViewById(R.id.txtDate);
-        final TextView txtName = findViewById(R.id.txtName)
+        final TextView txtName = findViewById(R.id.txtName);
         final EditText myEditText = findViewById(R.id.editText2);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                  String value = myEditText.getText().toString();
-                 url = "https://xkcd.com/" + value;
-                 txtURL.setText(url);
-                 String
+                 url = "https://xkcd.com/" + value + "/info.o.json";
+                 txtURL.setText(urlReader(url));
+                 txtDate.setText(postDate(url));
+
             }
         });
     }
-    private static String Date()
-    private static String readAll(Reader rd) throws IOException {
-        StringBuilder sb = new StringBuilder();
-        int cp;
-        while ((cp = rd.read()) != -1) {
-            sb.append((char) cp);
+    private static String postDate(String url) {
+        String day;
+        String month;
+        String year;
+        try {
+            JSONObject main = new JSONObject(url);
+            day = main.getString("day");
+            month = main.getString("month");
+            year = main.getString("year");
+            return month + "/" + day + "/" + year;
+        } catch (Exception e) {
+            return null;
         }
-        return sb.toString();
     }
+
     public static String urlReader(String url) {
         try {
             JSONObject main = new JSONObject(url);
             return main.getString("img");
         } catch (Exception e) {
-            return null;
+            return "Oops, looks like something went wrong";
         }
     }
     //public static String changeImage(String link) throws JSONException, IOException {

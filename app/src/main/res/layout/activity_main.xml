@@ -37,30 +37,65 @@
         android:id="@+id/txtName"
         android:layout_width="316dp"
         android:layout_height="21dp"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="48dp" />
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="48dp"
+        app:layout_constraintStart_toEndOf="@+id/txtPlate"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtPlate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="48dp"
         android:text="Name"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="48dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtPost2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="22dp"
         android:text="Date"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="69dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPlate" />
 
     <TextView
         android:id="@+id/txtDate"
         android:layout_width="315dp"
         android:layout_height="20dp"
-        tools:layout_editor_absoluteX="74dp"
-        tools:layout_editor_absoluteY="69dp" />
+        android:layout_marginStart="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="19dp"
+        app:layout_constraintStart_toEndOf="@+id/txtPost2"
+        app:layout_constraintTop_toBottomOf="@+id/txtName" />
+
+    <TextView
+        android:id="@+id/txtPost3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="22dp"
+        android:text="URL"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtPost2" />
+
+    <TextView
+        android:id="@+id/txtURL"
+        android:layout_width="315dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="22dp"
+        android:focusableInTouchMode="true"
+        android:selectAllOnFocus="true"
+        app:layout_constraintStart_toEndOf="@+id/txtPost3"
+        app:layout_constraintTop_toBottomOf="@+id/txtDate" />
 
 </android.support.constraint.ConstraintLayout>
